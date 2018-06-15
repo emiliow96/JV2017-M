@@ -318,17 +318,11 @@ public class Datos {
 	 * @return - el objeto mundo del nombre que ha recibido como parámetro o null si no existe
 	 */
 	
-	public Mundo obtenerMundoID(String nombre) {
-		StringBuilder listado = new StringBuilder();
-		Query consulta = db.query();
-		consulta.constrain(Mundo.class);
-		ObjectSet<Mundo> result = consulta.execute();
-		for (Mundo mundo: result) {
-			if (mundo.getNombre().equals(nombre)) {
-				return mundo;
-			} else {
-				return null;
-			}
+	public void obtenerMundoID(String nombre) throws DatosException {
+		try {
+			mundosDAO.obtener(nombre); /* Obtengo listado del mundo cuyo nombre se ha pasado como argumento */
+		} catch (DatosException e) {
+			e.printStackTrace(); /* Devuelvo error */
 		}
 	}
 	
