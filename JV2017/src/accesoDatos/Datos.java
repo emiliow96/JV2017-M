@@ -333,6 +333,16 @@ public class Datos {
 	}
 	
 	/**
+	 * M�todo obtenerTodosMundos() que devuelve una List con los objetos encontrados.
+	 * Hacemos uso del m�todo obtenerTodos de la clase MundosDAO.
+	 * @return - un listado de todos los mundos dados de alta.
+	 */
+	
+	public void obtenerTodosMundos() {
+		mundosDAO.obtenerTodos();
+	}
+	
+	/**
 	 * Método fachada para alta de un Mundo. 
 	 * Reenvia petición al método DAO específico.
 	 * @param mundo - el objeto Mundo a dar de alta.
