@@ -312,6 +312,27 @@ public class Datos {
 	}
 	
 	/**
+	 * Recibe un argumento que representa el id de un mundo, en este caso el nombre del mundo. Si recorriendo la lista encontramos un mundo que se llame
+	 * igual que un mundo ya dado de alta lo devolvemos, si no devolvemos null.
+	 * @param nombre - nombre del mundo que vamos a buscar
+	 * @return - el objeto mundo del nombre que ha recibido como par�metro o null si no existe
+	 */
+	
+	public Mundo obtenerMundoID(String nombre) {
+		StringBuilder listado = new StringBuilder();
+		Query consulta = db.query();
+		consulta.constrain(Mundo.class);
+		ObjectSet<Mundo> result = consulta.execute();
+		for (Mundo mundo: result) {
+			if (mundo.getNombre().equals(nombre)) {
+				return mundo;
+			} else {
+				return null;
+			}
+		}
+	}
+	
+	/**
 	 * Método fachada para alta de un Mundo. 
 	 * Reenvia petición al método DAO específico.
 	 * @param mundo - el objeto Mundo a dar de alta.
